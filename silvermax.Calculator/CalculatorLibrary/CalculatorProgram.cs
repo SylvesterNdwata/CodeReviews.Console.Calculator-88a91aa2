@@ -75,7 +75,30 @@ public class Calculator
         return Math.Pow(num, power);
     }
 
+    public double Trigonometry(string function, double angleInDegrees)
+    {
+        double angleInRadians = angleInDegrees * (Math.PI / 180);
 
+        writer.WriteStartObject();
+        writer.WritePropertyName("Operation");
+        writer.WriteValue($"Trig-{function}");
+        writer.WritePropertyName("Operand1");
+        writer.WriteValue(angleInDegrees);
+
+        double result = function switch
+        {
+            "sin" => Math.Sin(angleInRadians),
+            "cos" => Math.Cos(angleInRadians),
+            "tan" => Math.Tan(angleInRadians),
+            _ => double.NaN
+        };
+
+        writer.WritePropertyName("Result");
+        writer.WriteValue(result);
+        writer.WriteEndObject();
+
+        return result;
+    }
 }
 
 
