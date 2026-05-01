@@ -75,7 +75,7 @@ class Program
                     Console.WriteLine("\td - Divide");
                     Console.Write("Your option? ");
 
-                    string? op = Console.ReadLine().Trim().ToLower();
+                    string? op = Console.ReadLine()?.Trim().ToLower();
 
                     if (op == null || !Regex.IsMatch(op, "[a|s|m|d]"))
                     {
